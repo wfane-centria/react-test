@@ -4,7 +4,7 @@ import {bindActionCreators, createStore} from 'redux';
 import  * as countryAction from './actions/countryAction';
 import {connect} from 'react-redux';
 import axios from "axios";
-import countryReducer from './reducers/countryReducer';
+import countryReducer from './reducers/CountryReducer';
 
 export class CountryList extends React.Component {
 

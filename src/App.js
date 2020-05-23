@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { CountryList } from './CountryList';
+import { MyCountryList } from './MyCountryList';
 
 function App() {
   return (
     <div className="App">
-      <CountryList />
+      <MyCountryList />x
     </div>
   );
 }
