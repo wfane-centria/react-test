@@ -1,10 +1,12 @@
 import React from 'react';
-import * as  CountryTable  from './CountryTable';
+import * as  CountryTable  from './Table';
 import {bindActionCreators, createStore} from 'redux';
 import  * as countryAction from './actions/countryAction';
 import {connect} from 'react-redux';
 import axios from "axios";
 import countryReducer from './reducers/countryReducer';
+import './style.css';
+import * as  TableTest  from './TableTest';
 
 export class CountryList extends React.Component {
 
@@ -23,11 +25,7 @@ export class CountryList extends React.Component {
         const response = await axios.get("https://restcountries.eu/rest/v2/all");
         console.log(response.data);
         this.setState({ countries: response.data });
-       /*store.dispatch({
-           type: 'COUNTRY_LIST',
-           data: bindActionCreators.data
-       });*/
-       //console.log(data);
+      
     }
         /*return (dispatch, state) => {
             if(this.state.countries) {
@@ -37,12 +35,18 @@ export class CountryList extends React.Component {
         }*/
     //}
     render() {
-        //console.log(this.state.countries);
+        let countries = this.state.countries;
+        
+        let items = countries.map((country, index) => {
+           return <tr key={index}><td className="td">{country.name}</td> <td className="td">{country.alpha2Code}</td>
+              <td className="td">{country.capital}</td><td><img className="photo" src={country.flag} ></img></td><td className="td">{country.population}</td></tr>
+        });
         return(
-            
-        <CountryTable countries={this.state.countries} />
-        )
+         // <div> {items}</div> 
+         <TableTest  countries={countries} />      
+        ) 
     }
+
 }
 
 ////const store = createStore(countryReducer);
@@ -62,5 +66,6 @@ const mapStateToProps = (state) => {
     };
   };
   
-  export default connect(mapStateToProps,mapDispatchToProps)(CountryList);
+  //export default connect(mapStateToProps,mapDispatchToProps)(CountryList);
+  export default connect(null, null)(CountryList);
   //export default CountryList;
