@@ -5,11 +5,10 @@ import { Provider } from 'react-redux';
 import reducers from "./reducers/countryReducer";
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import TableTest from './TableTest.js';
 
 let store = createStore(reducers, applyMiddleware(thunk));
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <TableTest />,
   document.getElementById('root')
 );
